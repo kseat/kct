@@ -9,12 +9,17 @@ fn generate(times: usize) -> Vec<Value> {
 }
 
 #[test]
-fn returns_plain_on_singleton_lists() {
+fn returns_list_on_singleton_lists() {
 	let objects = generate(1);
 
 	let glued = kct_kube::glue(&objects);
 
-	let object: Value = serde_json::from_str(MINIMAL_OBJECT).unwrap();
+	let json = format!(
+		r#"{{ "kind": "List", "apiVersion": "v1", "items": [{0}] }}"#,
+		MINIMAL_OBJECT
+	);
+	let object: Value = serde_json::from_str(&json).unwrap();
+
 	assert_eq!(glued, object);
 }
 

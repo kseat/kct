@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - documentation about motivation, usage, and package structure
 - `include` function to render a subpackage under `kcps` with the provided values
 
+### Changed
+
+- output List object by default to improve consistency
+
 ### Fixed
 
 - unwanted print on when validating values
